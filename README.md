@@ -92,5 +92,18 @@ Chatbot: Thank you for chatting with us! Have a great day!
 
 ## Files
 
-- `advanced_gpt_chatbot.py`: Main chatbot implementation with AI integration
-- `paste.py`: Core database and restaurant information classes
+- `main.py`: **Single point of entry** for the application
+- `advanced_gpt_chatbot.py`: Implementation of the advanced chatbot with AI integration
+- `restaurant_chatbot.py`: Core database and restaurant information classes
+
+## Usage Instructions
+
+This project has a single, clear entry point through `main.py`. Always run this file to start the chatbot:
+
+```bash
+python main.py
+```
+
+This ensures proper dependency checking and module loading. The other Python files are meant to be used as modules and should not be executed directly.
+
+The code will automatically import the necessary components from `restaurant_chatbot.py`. Make sure both files are in the same directory.

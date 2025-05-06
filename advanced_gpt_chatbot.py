@@ -136,7 +136,19 @@ class RestaurantChatbot:
         self.conversation_history = []
         
         # Import restaurant data from other modules
-        from paste import RestaurantDB, RestaurantInfo
+        # Use conditional import to handle potential file name differences
+        try:
+            # If the original file was renamed to a proper module name
+            from restaurant_chatbot import RestaurantDB, RestaurantInfo
+        except ImportError:
+            try:
+                # If the original file kept its original name
+                from paste import RestaurantDB, RestaurantInfo
+            except ImportError:
+                print("Error: Could not import RestaurantDB and RestaurantInfo classes.")
+                print("Make sure restaurant_chatbot.py or paste.py is in the same directory.")
+                exit(1)
+                
         self.db = RestaurantDB()
         self.info = RestaurantInfo()
         
@@ -510,8 +522,8 @@ class RestaurantChatbot:
             return fallback
 
 
-def main():
-    """Main function to run the chatbot CLI"""
+def run_chatbot_cli():
+    """Function to run the chatbot CLI - separated from main for modularity"""
     print("===== The Good Table Restaurant Chatbot =====")
     print("Loading AI capabilities...")
     
@@ -548,6 +560,8 @@ def main():
         response = chatbot.process_message(user_input)
         print("\nChatbot:", response)
 
-
+# This code only runs if this file is executed directly, not when imported
 if __name__ == "__main__":
-    main()
+    # For backward compatibility, still allow this file to be run directly
+    print("Note: For better organization, consider running the main.py file instead.")
+    run_chatbot_cli()
