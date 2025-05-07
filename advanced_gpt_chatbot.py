@@ -561,7 +561,3 @@ def run_chatbot_cli():
         print("\nChatbot:", response)
 
 # This code only runs if this file is executed directly, not when imported
-if __name__ == "__main__":
-    # For backward compatibility, still allow this file to be run directly
-    print("Note: For better organization, consider running the main.py file instead.")
-    run_chatbot_cli()

@@ -581,6 +581,3 @@ def main():
             print(f"\nError in chatbot: {e}")
             print("Chatbot: I'm sorry, an error occurred. Can you try again?")
 
-
-if __name__ == "__main__":
-    main()
